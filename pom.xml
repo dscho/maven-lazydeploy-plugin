@@ -23,4 +23,21 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+         <artifactId>wagon-file</artifactId>
+         <version>1.0-beta-6</version>
+      </extension>
+    </extensions>
+  </build>
+
+  <distributionManagement>
+    <repository>
+      <id>local.snapshots</id>
+      <url>file:///tmp/test-repository/snapshots</url>
+    </repository>
+  </distributionManagement>
+
 </project>
