@@ -10,11 +10,24 @@
     This plugin tells the deploy plugin to avoid deploying snapshot versions unnecessarily, based on deep inspection of the (attached) artifact(s).
   </description>
   <url>http://maven.apache.org</url>
+  <properties>
+    <maven.version>2.0</maven.version>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-plugin-api</artifactId>
-      <version>2.0</version>
+      <version>${maven.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-project</artifactId>
+      <version>${maven.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact</artifactId>
+      <version>${maven.version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
