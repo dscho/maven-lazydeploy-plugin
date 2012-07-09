@@ -11,7 +11,7 @@
   </description>
   <url>http://maven.apache.org</url>
   <properties>
-    <maven.version>2.0</maven.version>
+    <maven.version>2.0.5</maven.version>
   </properties>
   <dependencies>
     <dependency>
