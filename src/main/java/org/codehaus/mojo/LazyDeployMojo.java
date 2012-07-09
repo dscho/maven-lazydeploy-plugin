@@ -24,11 +24,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Goal which touches a timestamp file.
+ * Goal which inspects the artifact (and attached artifacts) to determine whether a new snapshot needs to be deployed or not.
  *
  * @goal touch
  * 
- * @phase process-sources
+ * @author Johannes Schindelin
  */
 public class LazyDeployMojo
     extends AbstractMojo

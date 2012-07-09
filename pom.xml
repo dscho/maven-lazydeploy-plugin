@@ -6,6 +6,9 @@
   <packaging>maven-plugin</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>maven-lazydeploy-plugin Maven Mojo</name>
+  <description>
+    This plugin tells the deploy plugin to avoid deploying snapshot versions unnecessarily, based on deep inspection of the (attached) artifact(s).
+  </description>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
