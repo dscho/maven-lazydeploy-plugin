@@ -11,7 +11,7 @@
   </description>
   <url>http://maven.apache.org</url>
   <properties>
-    <maven.version>2.0.5</maven.version>
+    <maven.version>2.0.9</maven.version>
   </properties>
   <dependencies>
     <dependency>
@@ -28,12 +28,6 @@
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-artifact</artifactId>
       <version>${maven.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
     </dependency>
   </dependencies>
   <build>
@@ -59,6 +53,30 @@
         <configuration>
           <goalPrefix>verify</goalPrefix>
         </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-invoker-plugin</artifactId>
+        <version>1.6</version>
+	<configuration>
+          <projectsDirectory>src/it</projectsDirectory>
+          <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+          <pomIncludes>
+            <pomInclude>*/pom.xml</pomInclude>
+          </pomIncludes>
+          <settingsFile>src/it/settings.xml</settingsFile>
+          <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
+          <preBuildHookScript>setup.bsh</preBuildHookScript>
+          <postBuildHookScript>verify.bsh</postBuildHookScript>
+        </configuration>
+        <executions>
+          <execution>
+            <id>integration-test</id>
+            <goals>
+              <goal>install</goal>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
