@@ -1,0 +1,19 @@
+import java.io.File;
+
+rmRF(directory) {
+	list = directory.listFiles();
+	if (list == null)
+		return;
+	for (File file : list)
+		if (file.isFile()) {
+			if (!file.delete())
+				return false;
+		}
+		else if (file.isDirectory()) {
+			if (!rmRF(file) || !file.delete())
+				return false;
+		}
+	return true;
+}
+
+return rmRF(new File(basedir, "snapshots"));
