@@ -1,0 +1,28 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+
+getBuildNumber(file) {
+	document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+	elements = document.getElementsByTagName("buildNumber");
+	return elements.getLength() != 1 ? -1 : Integer.parseInt(elements.item(0).getFirstChild().getWholeText());
+}
+
+grep(file, match) {
+	count = 0;
+	reader = new BufferedReader(new FileReader(file));
+	for (;;) {
+		line = reader.readLine();
+		if (line == null)
+			break;
+		if (line.indexOf(match) >= 0)
+			count++;
+	}
+	reader.close();
+	return count;
+}
+
+return 1 == getBuildNumber(new File(basedir, "snapshots/org/codehaus/mojo/its/dont-deploy-identical/0.99-SNAPSHOT/maven-metadata.xml")) &&
+	1 == grep(new File(basedir, "build.log"), "[INFO] Skip deployment of unchanged artifact org.codehaus.mojo.its:dont-deploy-identical:jar:0.99-SNAPSHOT");
